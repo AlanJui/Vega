@@ -33,7 +33,7 @@ namespace Vega.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("MakeId");
+                    b.Property<int>("MakeId");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -50,7 +50,8 @@ namespace Vega.Migrations
                 {
                     b.HasOne("Vega.Models.Make", "Make")
                         .WithMany("Models")
-                        .HasForeignKey("MakeId");
+                        .HasForeignKey("MakeId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

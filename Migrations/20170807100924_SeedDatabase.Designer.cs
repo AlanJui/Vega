@@ -8,8 +8,8 @@ using Vega.Persistence;
 namespace Vega.Migrations
 {
     [DbContext(typeof(VegaDbContext))]
-    [Migration("20170807050116_ApplyConstraints")]
-    partial class ApplyConstraints
+    [Migration("20170807100924_SeedDatabase")]
+    partial class SeedDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,7 +34,7 @@ namespace Vega.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("MakeId");
+                    b.Property<int>("MakeId");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -51,7 +51,8 @@ namespace Vega.Migrations
                 {
                     b.HasOne("Vega.Models.Make", "Make")
                         .WithMany("Models")
-                        .HasForeignKey("MakeId");
+                        .HasForeignKey("MakeId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }
