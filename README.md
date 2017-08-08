@@ -74,4 +74,4 @@ dotnet run
 
 ```
 ng g component [軟體元件] --module ../app.module.shared.ts
-``
+```
