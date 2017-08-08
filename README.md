@@ -10,13 +10,13 @@ App後端：
 
  ## 專案使用操作
 
-(1)
+(1) 下載程式碼
 
 ```
 git clone git@github.com:AlanJui/Vega.git
 ```
 
-(2)
+(2) 進入專案程式碼檔案目錄
 
 ```
 cd Vega
