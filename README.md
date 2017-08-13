@@ -75,3 +75,62 @@ dotnet run
 ```
 ng g component [軟體元件] --module ../app.module.shared.ts
 ```
+
+## 佈署到 Heroku
+
+(1) 為 ASP.NET Core Web App 安裝所需之套件
+```
+$ dotnet restore
+```
+
+(2) ASP.NET Core Web App 「發行作業」（為 Docker Build 做準備）
+```
+$ dotnet publish -o out
+```
+
+(3) 建置 Docker Image
+```
+$ docker build -f Dockerfile.local -t vega .
+```
+
+(4) 執行 Docker Container
+```
+$ docker run --rm -p 8000:80 asp-net-core-web
+```
+
+(5) 使用 Web 瀏覽器，瀏覽網址： http://localhost:8000
+
+
+------
+
+## 佈署到 Heroku
+
+(1) 登入 Heroku Container
+```
+$ heroku container:login
+```
+
+(2) 建立 Heroku App
+```
+$ heroku create <HerokuApp>
+```
+
+(3) ASP.NET Core Web App 「發行作業」
+```
+$ dotnet publish -c Release -o out
+```
+
+(4) 佈署到 Heroku 平台
+```
+$ 
+heroku container:push web
+```
+
+(5) 執行 Heroku App
+```
+$ heroku open -a <HerokuApp>
+```
+
+【Heroku參考】： https://ccc-asp-net-core-app.herokuapp.com/
+
+【參考文件】： https://devcenter.heroku.com/articles/container-registry-and-runtime

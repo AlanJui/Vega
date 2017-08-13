@@ -2,7 +2,8 @@
 <form>
   <div class="form-group">
     <label for="make">Make</label>
-    <select name="make" id="make" class="form-control" [(ngModel)]="vehicle" (change)="onMakeChange()">
+    <!-- <select name="make" id="make" class="form-control" [(ngModel)]="vehicle" (change)="onMakeChange()"> -->
+    <select name="make" id="make" class="form-control" (change)="onMakeChange()">
       <option value=""></option>
       <option *ngFor="let m of makes" value="{{m.id}}">{{m.name}}</option>
     </select>

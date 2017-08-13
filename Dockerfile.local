@@ -1,0 +1,8 @@
+FROM microsoft/aspnetcore:1.1
+WORKDIR /app
+
+# dotnet publish -o out
+COPY ./out .
+
+ENV ASPNETCORE_URLS='http://+:80'
+ENTRYPOINT ["dotnet", "Vega.dll"]
