@@ -2,7 +2,9 @@
   "name": "vega",
   "version": "0.0.1",
   "scripts": {
-    "test": "karma start ClientApp/test/karma.conf.js"
+    "test": "karma start ClientApp/test/karma.conf.js",
+    "build-docker-local": "docker build -f Dockerfile.local -t alanjui/asp-net-core-spa .",
+    "run-docker-local": "docker run --name vega --rm -p 8000:80 -d alanjui/asp-net-core-spa"
   },
   "dependencies": {
     "@angular/animations": "4.1.2",

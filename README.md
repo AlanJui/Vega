@@ -76,7 +76,7 @@ dotnet run
 ng g component [軟體元件] --module ../app.module.shared.ts
 ```
 
-## 佈署到 Heroku
+## 建置 Local 端 Docker Image
 
 (1) 為 ASP.NET Core Web App 安裝所需之套件
 ```
@@ -90,12 +90,12 @@ $ dotnet publish -o out
 
 (3) 建置 Docker Image
 ```
-$ docker build -f Dockerfile.local -t vega .
+$ docker build -f Dockerfile.local -t alanjui/asp-net-core-spa .
 ```
 
 (4) 執行 Docker Container
 ```
-$ docker run --rm -p 8000:80 asp-net-core-web
+$ docker run --name vega --rm -p 8000:80 alanjui/asp-net-core-web
 ```
 
 (5) 使用 Web 瀏覽器，瀏覽網址： http://localhost:8000
@@ -104,6 +104,8 @@ $ docker run --rm -p 8000:80 asp-net-core-web
 ------
 
 ## 佈署到 Heroku
+
+令 <herokuApp> = my-vega
 
 (1) 登入 Heroku Container
 ```
@@ -122,14 +124,17 @@ $ dotnet publish -c Release -o out
 
 (4) 佈署到 Heroku 平台
 ```
-$ 
-heroku container:push web
+$ heroku container:push web
 ```
 
 (5) 執行 Heroku App
 ```
 $ heroku open -a <HerokuApp>
 ```
+
+Web URL: https://my-vega.herokuapp.com/
+
+Heroku Management Site: https://dashboard.heroku.com/apps/my-vega
 
 【Heroku參考】： https://ccc-asp-net-core-app.herokuapp.com/
 
